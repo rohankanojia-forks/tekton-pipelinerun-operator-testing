@@ -1,0 +1,34 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: testsuiteruns.example.com
+spec:
+  group: example.com
+  names:
+    kind: TestSuiteRun
+    plural: testsuiteruns
+    singular: testsuiterun
+  scope: Namespaced
+  versions:
+    - name: v1
+      served: true
+      storage: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          properties:
+            spec:
+              type: object
+              properties:
+                machineType:
+                  type: string
+                  description: "The type of machine used for the test run (e.g., large, medium, small)."
+                testName:
+                  type: string
+                  description: "The name of the test to be executed."
+            status:
+              type: object
+              properties:
+                phase:
+                  type: string
+                  description: "The current phase of the test suite run (e.g., Pending, Running, Completed)."

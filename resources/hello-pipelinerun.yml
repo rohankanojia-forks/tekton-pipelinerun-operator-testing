@@ -1,0 +1,17 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  name: hello-world-pipelinerun
+  namespace: default
+spec:
+  pipelineSpec:
+    tasks:
+      - name: hello-world-task
+        taskSpec:
+          steps:
+            - name: print-message
+              image: ubuntu
+              script: |
+                #!/bin/bash
+                echo "Hello, World!"
+

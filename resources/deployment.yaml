@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tekton-operator
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tekton-operator
+  template:
+    metadata:
+      labels:
+        app: tekton-operator
+    spec:
+      containers:
+        - name: tekton-operator
+          image: rohankanojia/tekton-operator:latest
+          imagePullPolicy: Always
